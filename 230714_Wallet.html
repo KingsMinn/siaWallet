@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>애플월렛에 QR 코드 추가하기</title>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+<body>
+  <h1>애플월렛에 QR 코드 추가하기</h1>
+
+  <div id="qrcode"></div>
+
+  <button onclick="addToAppleWallet()">애플월렛에 추가</button>
+
+  <script>
+    // QR 코드 생성
+    var qrCode = new QRCode(document.getElementById("qrcode"), {
+      text: "QR 코드에 표시할 텍스트",
+      width: 128,
+      height: 128
+    });
+
+    // 애플월렛에 QR 코드 추가하기
+    function addToAppleWallet() {
+      var text = qrCode._oDrawing._el.firstChild.innerHTML; // QR 코드의 HTML 가져오기
+      var appleWalletLink = "shoebox://"; // 애플월렛 링크 설정
+
+      // 애플월렛 링크에 QR 코드 HTML 추가
+      appleWalletLink += encodeURIComponent(text);
+
+      // 애플월렛 링크 열기
+      window.location.href = appleWalletLink;
+    }
+  </script>
+</body>
+</html>
