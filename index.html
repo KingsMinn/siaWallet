@@ -9,12 +9,10 @@
 
   <div id="qrcode"></div>
 
-  <button onclick="addToAppleWallet()">애플월렛에 추가</button>
-
   <script>
     // QR 코드 생성
     var qrCode = new QRCode(document.getElementById("qrcode"), {
-      text: "QR 코드에 표시할 텍스트",
+      text: "애플월렛에 추가할 텍스트",
       width: 128,
       height: 128
     });
@@ -31,5 +29,7 @@
       window.location.href = appleWalletLink;
     }
   </script>
+
+  <button onclick="addToAppleWallet()">애플월렛에 QR 코드 추가</button>
 </body>
 </html>
